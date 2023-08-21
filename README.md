@@ -1,2 +1,2 @@
 # ECommerceRestWebService
- RESTful Web Service 
+ Spring MVC Rest API E-Commerce Site Project

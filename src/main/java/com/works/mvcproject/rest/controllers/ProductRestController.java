@@ -4,8 +4,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -139,7 +142,7 @@ public class ProductRestController {
 		return hm;
 	}
 
-	@GetMapping("/deleteSingle")
+	@DeleteMapping("/deleteSingle")
 	public Map<RestEnum, Object> deleteSingle(@RequestParam int pid) {
 		Map<RestEnum, Object> hm = new LinkedHashMap<>();
 
@@ -158,7 +161,7 @@ public class ProductRestController {
 		return hm;
 	}
 	
-	@PostMapping("/updateSingle")
+	@PutMapping("/updateSingle")
 	public Map<RestEnum, Object> updateSingle(@RequestBody Product product) {
 		Map<RestEnum, Object> hm = new LinkedHashMap<>();
 
