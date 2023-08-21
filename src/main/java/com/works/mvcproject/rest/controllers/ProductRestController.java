@@ -4,8 +4,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -142,7 +140,7 @@ public class ProductRestController {
 		return hm;
 	}
 
-	@DeleteMapping("/deleteSingle")
+	@GetMapping("/deleteSingle")
 	public Map<RestEnum, Object> deleteSingle(@RequestParam int pid) {
 		Map<RestEnum, Object> hm = new LinkedHashMap<>();
 
