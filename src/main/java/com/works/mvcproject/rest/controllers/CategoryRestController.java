@@ -3,8 +3,11 @@ package com.works.mvcproject.rest.controllers;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -79,24 +82,24 @@ public class CategoryRestController {
 		return hm;
 	}
 
-	@GetMapping("/deleteSingle")
-	public Map<RestEnum, Object> deleteSingle(@RequestParam int cid) {
+	@DeleteMapping("/deleteSingle")
+	public Map<RestEnum, Object> deleteSingle(@RequestBody Category c) {
 		Map<RestEnum, Object> hm = new LinkedHashMap<>();
 		
 		try {
-			catRepo.deleteById(cid);
+			catRepo.deleteById(c.getCid());
 			hm.put(RestEnum.status, true);
 			hm.put(RestEnum.message, RestMessages.d_success);
-			hm.put(RestEnum.result, cid);
+			hm.put(RestEnum.result, c.getCid());
 		} catch (Exception e) {
 			hm.put(RestEnum.status, false);
 			hm.put(RestEnum.message, RestMessages.d_fail);
-			hm.put(RestEnum.result, cid);
+			hm.put(RestEnum.result, c.getCid());
 		}
 		return hm;
 	}
 
-	@PostMapping("/updateSingle")
+	@PutMapping("/updateSingle")
 	public Map<RestEnum, Object> updateSingle(@RequestBody Category category) {
 		
 		Map<RestEnum, Object> hm = new LinkedHashMap<>();		
